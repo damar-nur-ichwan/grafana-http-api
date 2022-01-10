@@ -1,4 +1,6 @@
-# GRAFANA HTTP API
+# GRAFANA HTTP API for Node.js
+**Developed by** Damar Nur Ichwan
+
 ## Installation
 1. Run this command in your project
 ```
