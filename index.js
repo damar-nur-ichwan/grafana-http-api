@@ -64,4 +64,9 @@ module.exports = {
     delete_datasource_by_name               : require('./src/delete_datasource_by_name'),
     datasource_proxy_calls                  : require('./src/datasource_proxy_calls'),
     query_datasource_by_id                  : require('./src/query_datasource_by_id'),
+    enable_datasource_permissions           : require('./src/enable_datasource_permissions'),
+    disable_datasource_permissions          : require('./src/disable_datasource_permissions'),
+    get_datasource_permissions              : require('./src/get_datasource_permissions'),
+    add_datasource_permission              : require('./src/add_datasource_permission'),
+    remove_datasource_permission            : require('./src/remove_datasource_permission'),
 }

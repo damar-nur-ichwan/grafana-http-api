@@ -121,4 +121,9 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 //     rawSql: 'SELECT * FROM database',
 //     format: 'table'
 // }])
+// index.enable_datasource_permissions(4)
+// index.disable_datasource_permissions(4)
+// index.get_datasource_permissions(4)
+// index.add_datasource_permission(1,{userId:1,permission:1})
+// index.remove_datasource_permission(1,4)
 // .then(res=>console.log(res)).catch(res=>console.log(res))
