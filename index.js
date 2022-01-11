@@ -4,7 +4,7 @@ module.exports = {
     switch_org_context                      : require('./src/switch_org_context'),
     create_api_key                          : require('./src/create_api_key'),
     delete_api_key                          : require('./src/delete_api_key'),
-    add_dashboard                           : require('./src/add_dashboard'),
+    create_or_update_dashboard              : require('./src/create_or_update_dashboard'),
     fetch_settings                          : require('./src/fetch_settings'),
     update_settings                         : require('./src/update_settings'),
     grafana_stats                           : require('./src/grafana_stats'),
@@ -42,5 +42,8 @@ module.exports = {
     basic_auth                              : require('./src/basic_auth'),
     basic_auth_using_token                  : require('./src/basic_auth_using_token'),
     get_api_keys                            : require('./src/get_api_keys'),
-
+    get_dashboard_by_uid                    : require('./src/get_dashboard_by_uid'),
+    delete_dashboard_by_uid                 : require('./src/delete_dashboard_by_uid'),
+    get_home_dashboard                      : require('./src/get_home_dashboard'),
+    tags_for_dashboard                      : require('./src/tags_for_dashboard'),
 }

@@ -1,7 +1,7 @@
 module.exports = {
     "id": null,
-    "uid": null,
-    "title": "Production Overview",
+    "uid": 'trial1',
+    "title": "Blank",
     "tags": [ "templated" ],
     "timezone": "browser",
     "schemaVersion": 16,

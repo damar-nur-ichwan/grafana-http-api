@@ -1,14 +1,15 @@
 require('dotenv').config({path: __dirname + '/.env'})
-const blank = require('./doashboard/blank')
+const blank = require('./dashboards/blank')
 const index = require('./index')
-const home = require('./doashboard/home')
+const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_info')
+
 
 // index.create_org(`trial_api`)
 // index.add_admin_user_to_org(`2`,`damar`,`Admin`)
 // index.switch_org_context(1)
 // index.create_api_key('trial2','Admin',{secondsToLive:60})
 // index.delete_api_key(4)
-// index.add_dashboard(blank)
+// index.create_or_update_dashboard(suprboard_kubernetes_info,{message:'add kubernetes info dashboard'})
 // index.fetch_settings()
 // index.update_settings(
 //     {
@@ -70,4 +71,8 @@ const home = require('./doashboard/home')
 // index.auth_token_for_user(2)
 // index.basic_auth('admin','admin')
 // index.basic_auth_using_token('eyJrIjoiMkRLamZ3T1g5cDRrSjR0Y1ROanVoR21WSzNJV09IcWwiLCJuIjoiZG5pIiwiaWQiOjF9')
-// .then(res=>console.log(res)).catch(res=>console.log(res))
+// index.get_dashboard_by_uid('trial1')
+// index.delete_dashboard_by_uid('trial1')
+// index.get_home_dashboard()
+// index.tags_for_dashboard()
+.then(res=>console.log(res)).catch(res=>console.log(res))
