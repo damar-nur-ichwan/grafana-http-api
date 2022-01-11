@@ -126,4 +126,30 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.get_datasource_permissions(4)
 // index.add_datasource_permission(1,{userId:1,permission:1})
 // index.remove_datasource_permission(1,4)
-// .then(res=>console.log(res)).catch(res=>console.log(res))
+// index.get_external_groups(2)
+// index.add_external_group(1,'editors','groups','grafana','org')
+// index.remove_external_group(1,1)
+// index.get_access_control_status()
+// index.get_all_access_control_roles()
+// index.get_access_control_role_by_uid('xxx')
+// index.create_custom_role({
+//     version:1,
+//     uid: 'trial1',
+//     name: 'trial1',
+//     description:'',
+//     group: 'team1',
+//     displayName: 'trial1',
+//     global: false,
+//     permissions:[{action:'roles:delete',scope:'permissions:delegate'}]
+// })
+// index.update_custom_role({
+//     version:1,
+//     name: 'trial1',
+//     description:'',
+//     group: 'team1',
+//     displayName: 'trial1',
+//     global: false,
+//     permissions:[{action:'roles:delete',scope:'permissions:delegate'}]
+// })
+// index.delete_custom_role('xx',false)
+.then(res=>console.log(res)).catch(res=>console.log(res))

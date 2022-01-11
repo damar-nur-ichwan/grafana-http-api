@@ -67,6 +67,16 @@ module.exports = {
     enable_datasource_permissions           : require('./features/enable_datasource_permissions'),
     disable_datasource_permissions          : require('./features/disable_datasource_permissions'),
     get_datasource_permissions              : require('./features/get_datasource_permissions'),
-    add_datasource_permission              : require('./features/add_datasource_permission'),
+    add_datasource_permission               : require('./features/add_datasource_permission'),
     remove_datasource_permission            : require('./features/remove_datasource_permission'),
+    get_external_groups                     : require('./features/get_external_groups'),
+    add_external_group                      : require('./features/add_external_group'),
+    remove_external_group                   : require('./features/remove_external_group'),
+    get_access_control_status               : require('./features/get_access_control_status'),
+    get_all_access_control_roles            : require('./features/get_all_access_control_roles'),
+    get_access_control_role_by_uid          : require('./features/get_access_control_role_by_uid'),
+    create_custom_role                      : require('./features/create_custom_role'),
+    update_custom_role                      : require('./features/update_custom_role'),
+    delete_custom_role                      : require('./features/delete_custom_role'),
+
 }
