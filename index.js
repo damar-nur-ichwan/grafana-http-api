@@ -48,4 +48,8 @@ module.exports = {
     tags_for_dashboard                      : require('./src/tags_for_dashboard'),
     get_dashboard_permissions               : require('./src/get_dashboard_permissions'),
     update_dashboard_permissions            : require('./src/update_dashboard_permissions'),
+    get_all_dashboard_versions              : require('./src/get_all_dashboard_versions'),
+    get_dashboard_version                   : require('./src/get_dashboard_version'),
+    restore_dashboard                       : require('./src/restore_dashboard'),
+    compare_dashboard_versions              : require('./src/compare_dashboard_versions'),
 }

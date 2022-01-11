@@ -82,4 +82,8 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 //     {userId: 1, permission: 2},
 //     {teamId: 1, permission: 2},
 //     ])
+// index.get_all_dashboard_versions(3,0,2)
+// index.get_dashboard_version(1,2)
+// index.restore_dashboard(1,3)
+// index.compare_dashboard_versions({dashboardId:1,version:1},{dashboardId:1,version:3})
 .then(res=>console.log(res)).catch(res=>console.log(res))
