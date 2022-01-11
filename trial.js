@@ -75,4 +75,11 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.delete_dashboard_by_uid('trial1')
 // index.get_home_dashboard()
 // index.tags_for_dashboard()
+// index.get_dashboard_permissions(1)
+// index.update_dashboard_permissions(1,[
+//     {role: 'Viewer', permission: 1},
+//     {role: 'Editor', permission: 2},
+//     {userId: 1, permission: 2},
+//     {teamId: 1, permission: 2},
+//     ])
 .then(res=>console.log(res)).catch(res=>console.log(res))

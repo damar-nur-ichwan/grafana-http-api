@@ -46,4 +46,6 @@ module.exports = {
     delete_dashboard_by_uid                 : require('./src/delete_dashboard_by_uid'),
     get_home_dashboard                      : require('./src/get_home_dashboard'),
     tags_for_dashboard                      : require('./src/tags_for_dashboard'),
+    get_dashboard_permissions               : require('./src/get_dashboard_permissions'),
+    update_dashboard_permissions            : require('./src/update_dashboard_permissions'),
 }
