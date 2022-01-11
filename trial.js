@@ -86,4 +86,39 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.get_dashboard_version(1,2)
 // index.restore_dashboard(1,3)
 // index.compare_dashboard_versions({dashboardId:1,version:1},{dashboardId:1,version:3})
+// index.get_all_datasources()
+// index.get_datasource_by_id(1)
+// index.get_datasource_by_uid('xx')
+// index.get_datasource_by_name('prometheus')
+// index.get_datasource_id_by_name('promehteus')
+// index.create_datasource('prometheus1','prometheus','http://shirohige:30000/','proxy',true,{
+//     basicAuthUser:'adicipta',
+//     secureJsonData: {
+//         basicAuthPassword: 'AdIns2021'
+//     }
+// })
+// index.create_datasource('test_datasource','cloudwatch','http://monitoring.us-west-1.amazonaws.com','proxy',{
+//     jsonData: {
+//         authType: "keys",
+//         defaultRegion: "us-west-1"
+//       },
+//       secureJsonData: {
+//         accessKey: "Ol4pIDpeKSA6XikgOl4p",
+//         secretKey: "dGVzdCBrZXkgYmxlYXNlIGRvbid0IHN0ZWFs"
+//       },
+//       isDefault: true
+// })
+// index.update_datasouce_by_id(1,'prometheus','prometheus','shirohige:30000','proxy',{secureJsonData:{basicAuthPassword:'blablabla'}})
+// index.delete_datasource_by_id(3)
+// index.delete_datasource_by_uid('Js0E1VJ7z')
+// index.delete_datasource_by_name('prometheus')
+// index.datasource_proxy_calls(4)
+// index.query_datasource_by_id(0,16000000000,[{
+//     refId:'sda',
+//     intervalMs: 10000,
+//     maxDataPoints: 200,
+//     datasourceId: 1,
+//     rawSql: 'SELECT * FROM database',
+//     format: 'table'
+// }])
 .then(res=>console.log(res)).catch(res=>console.log(res))
