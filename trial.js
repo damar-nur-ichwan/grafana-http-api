@@ -121,4 +121,4 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 //     rawSql: 'SELECT * FROM database',
 //     format: 'table'
 // }])
-.then(res=>console.log(res)).catch(res=>console.log(res))
+// .then(res=>console.log(res)).catch(res=>console.log(res))
