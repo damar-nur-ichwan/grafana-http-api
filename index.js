@@ -83,4 +83,8 @@ module.exports = {
     add_user_role_assignment                : require('./features/add_user_role_assignment'),
     delete_user_role_assignment             : require('./features/delete_user_role_assignment'),
     set_user_role_assignments               : require('./features/set_user_role_assignments'),
+    get_all_built_in_role_assignments       : require('./features/get_all_built_in_role_assignments'),
+    create_built_in_role_assignment         : require('./features/create_built_in_role_assignment'),
+    remove_built_in_role_assignment         : require('./features/remove_built_in_role_assignment'),
+    
 }

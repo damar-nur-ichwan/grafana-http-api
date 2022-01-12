@@ -157,4 +157,7 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.add_user_role_assignment(1,false,'XvHQJq57z')
 // index.delete_user_role_assignment(1,'ss')
 // index.set_user_role_assignments(0,false,['sdasd','dasda'])
+// index.get_all_built_in_role_assignments()
+// index.create_built_in_role_assignment('trial','admin',false)
+// index.remove_built_in_role_assignment('admin','trial')
 .then(res=>console.log(res)).catch(res=>console.log(res))
