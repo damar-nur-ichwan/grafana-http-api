@@ -152,4 +152,9 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 //     permissions:[{action:'roles:delete',scope:'permissions:delegate'}]
 // })
 // index.delete_custom_role('xx',false)
+// index.list_roles_assigned_to_user(1)
+// index.list_permissions_assigned_to_user(1)
+// index.add_user_role_assignment(1,false,'XvHQJq57z')
+// index.delete_user_role_assignment(1,'ss')
+// index.set_user_role_assignments(0,false,['sdasd','dasda'])
 .then(res=>console.log(res)).catch(res=>console.log(res))

@@ -78,5 +78,9 @@ module.exports = {
     create_custom_role                      : require('./features/create_custom_role'),
     update_custom_role                      : require('./features/update_custom_role'),
     delete_custom_role                      : require('./features/delete_custom_role'),
-
+    list_roles_assigned_to_user             : require('./features/list_roles_assigned_to_user'),
+    list_permissions_assigned_to_user       : require('./features/list_permissions_assigned_to_user'),
+    add_user_role_assignment                : require('./features/add_user_role_assignment'),
+    delete_user_role_assignment             : require('./features/delete_user_role_assignment'),
+    set_user_role_assignments               : require('./features/set_user_role_assignments'),
 }
