@@ -86,5 +86,10 @@ module.exports = {
     get_all_built_in_role_assignments       : require('./features/get_all_built_in_role_assignments'),
     create_built_in_role_assignment         : require('./features/create_built_in_role_assignment'),
     remove_built_in_role_assignment         : require('./features/remove_built_in_role_assignment'),
-    
+    get_all_folders                         : require('./features/get_all_folders'),
+    get_folder_by_uid                       : require('./features/get_folder_by_uid'),
+    create_folder                           : require('./features/create_folder'),
+    update_folder                           : require('./features/update_folder'),
+    delete_folder                           : require('./features/delete_folder'),
+    get_folder_by_id                        : require('./features/get_folder_by_id'),
 }
