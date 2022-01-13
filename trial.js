@@ -169,7 +169,18 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.get_folder_permissions('trial')
 // index.update_folder_permission('trial',[
 //     {
-
+//         role: 'Viewer',
+//         permission: 1
+//     },{
+//         role: 'Editor',
+//         permission: 2
+//     },{
+//         teamId: 1,
+//         permission: 1
+//     },{
+//         userId: 0,
+//         permission: 4
 //     }
-// ]})
+// ])
+index.folder_or_dashboard_search({query:'HOME'})
 .then(res=>console.log(res)).catch(res=>console.log(res))

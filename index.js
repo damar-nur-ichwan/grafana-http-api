@@ -94,4 +94,5 @@ module.exports = {
     get_folder_by_id                        : require('./features/get_folder_by_id'),
     get_folder_permissions                  : require('./features/get_folder_permissions'),
     update_folder_permission                : require('./features/update_folder_permission'),
+    folder_or_dashboard_search              : require('./features/folder_or_dashboard_search'),
 }
