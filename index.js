@@ -111,4 +111,5 @@ module.exports = {
     create_library_element                  : require('./features/create_library_element'),
     update_library_element                  : require('./features/update_library_element'),
     delete_library_element                  : require('./features/delete_library_element'),
+    send_a_report                           : require('./features/send_a_report'),
 }

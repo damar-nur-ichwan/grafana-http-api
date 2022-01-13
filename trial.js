@@ -203,4 +203,5 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 //     kind: 1
 // })
 // index.delete_library_element('trial1')
+// index.send_a_report(1,{useEmailsFromReport:true})
 .then(res=>console.log(res)).catch(res=>console.log(res))
