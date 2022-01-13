@@ -166,4 +166,10 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.update_folder('trial','UPDATE FOLDER',{overwrite:true})
 // index.delete_folder('trial')
 // index.get_folder_by_id(5)
+// index.get_folder_permissions('trial')
+// index.update_folder_permission('trial',[
+//     {
+
+//     }
+// ]})
 .then(res=>console.log(res)).catch(res=>console.log(res))

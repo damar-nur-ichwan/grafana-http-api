@@ -92,4 +92,6 @@ module.exports = {
     update_folder                           : require('./features/update_folder'),
     delete_folder                           : require('./features/delete_folder'),
     get_folder_by_id                        : require('./features/get_folder_by_id'),
+    get_folder_permissions                  : require('./features/get_folder_permissions'),
+    update_folder_permission                : require('./features/update_folder_permission'),
 }
