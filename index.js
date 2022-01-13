@@ -153,4 +153,11 @@ module.exports = {
     unstar_a_dashboard                      : require('./features/unstar_a_dashboard'),
     auth_tokens_of_the_actual_user          : require('./features/auth_tokens_of_the_actual_user'),
     revoke_auth_tokens_of_the_actual_user   : require('./features/revoke_auth_tokens_of_the_actual_user'),
+    get_current_org                         : require('./features/get_current_org'),
+    get_current_org_users                   : require('./features/get_current_org_users'),
+    get_current_org_users_lookup            : require('./features/get_current_org_users_lookup'),
+    updates_the_given_user                  : require('./features/updates_the_given_user'),
+    delete_user_in_current_org              : require('./features/delete_user_in_current_org'), 
+    update_current_org                      : require('./features/update_current_org'),
+    add_user_to_the_current_org             : require('./features/add_user_to_the_current_org'),
 }
