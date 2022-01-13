@@ -160,4 +160,13 @@ module.exports = {
     delete_user_in_current_org              : require('./features/delete_user_in_current_org'), 
     update_current_org                      : require('./features/update_current_org'),
     add_user_to_the_current_org             : require('./features/add_user_to_the_current_org'),
+    get_org_by_id                           : require('./features/get_org_by_id'),
+    get_org_by_name                         : require('./features/get_org_by_name'),
+    search_all_orgs                         : require('./features/search_all_orgs'),
+    update_org                              : require('./features/update_org'),
+    delete_org                              : require('./features/delete_org'),
+    get_org_users                           : require('./features/get_org_users'),
+    add_org_user                            : require('./features/add_org_user'),
+    update_org_user                         : require('./features/update_org_user'),
+    delete_org_user                         : require('./features/delete_org_user'),
 }

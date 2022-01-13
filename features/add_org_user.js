@@ -1,9 +1,9 @@
 require('dotenv').config()
 const { default: axios } = require("axios");
 
-module.exports = function (role=0,loginOrEmail=0){
+module.exports = function (orgId=0,loginOrEmail='',role=''){
     const host = `http://${process.env.GRAFANA_USERNAME}:${process.env.GRAFANA_PASSWORD}@${process.env.GRAFANA_HOST}`
-    const path = `/api/org/users`
+    const path = `/api/orgs/${orgId}/users`
     const url = host + path
     const data = {role,loginOrEmail}
     const config = {
