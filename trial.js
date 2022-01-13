@@ -215,12 +215,12 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.get_one_playlist(0)
 // index.get_playlist_items(0)
 // index.get_playlist_dashboards(0)
-index.create_playlist('trial playlist','1m',[{
-    type: 'dashboard_by_id',
-    value: "3",
-    order: 1,
-    title: 'KUBERNETES'
-}])
+// index.create_playlist('trial playlist','1m',[{
+//     type: 'dashboard_by_id',
+//     value: "3",
+//     order: 1,
+//     title: 'KUBERNETES'
+// }])
 // index.update_playlist(1,'tral update playlist','1m',[{
 //     type: 'dashboard_by_id',
 //     value: "3",
@@ -229,4 +229,16 @@ index.create_playlist('trial playlist','1m',[{
 //     }]
 // )
 // index.delete_playlist(1)
+// index.team_search({
+//     perpage:5
+// })
+// index.get_team_by_id(1)
+// index.add_team('trial team','damar.ni@ad-ins.com',1)
+// index.update_team(1,'trial update team','damar@ad-ins.com')
+// index.delete_team_by_id(1)
+// index.get_team_members(2)
+// index.add_team_member(2,2)
+// index.remove_member_from_team(2,2)
+// index.get_team_preferences(2)
+// index.update_team_preferences(2,'dark',0,'utc')
 .then(res=>console.log(res)).catch(res=>console.log(res))

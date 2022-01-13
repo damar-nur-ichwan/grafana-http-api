@@ -126,4 +126,15 @@ module.exports = {
     create_playlist                         : require('./features/create_playlist'),
     update_playlist                         : require('./features/update_playlist'),
     delete_playlist                         : require('./features/delete_playlist'),
+    team_search                             : require('./features/team_search'),
+    get_team_by_id                          : require('./features/get_team_by_id'),
+    add_team                                : require('./features/add_team'),
+    update_team                             : require('./features/update_team'),
+    delete_team_by_id                       : require('./features/delete_team_by_id'),
+    get_team_members                        : require('./features/get_team_members'),
+    add_team_member                         : require('./features/add_team_member'),
+    remove_member_from_team                 : require('./features/remove_member_from_team'),
+    get_team_preferences                    : require('./features/get_team_preferences'),
+    update_team_preferences                 : require('./features/update_team_preferences'),
+         
 }
