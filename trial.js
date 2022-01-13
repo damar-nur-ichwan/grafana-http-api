@@ -211,4 +211,22 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.get_settings()
 // index.renew_session_based_on_remember_cookie()
 // index.grafana_health_information()
+// index.search_playlist({query:'trial'})
+// index.get_one_playlist(0)
+// index.get_playlist_items(0)
+// index.get_playlist_dashboards(0)
+index.create_playlist('trial playlist','1m',[{
+    type: 'dashboard_by_id',
+    value: "3",
+    order: 1,
+    title: 'KUBERNETES'
+}])
+// index.update_playlist(1,'tral update playlist','1m',[{
+//     type: 'dashboard_by_id',
+//     value: "3",
+//     order: 1,
+//     title: 'KUBERNETES'
+//     }]
+// )
+// index.delete_playlist(1)
 .then(res=>console.log(res)).catch(res=>console.log(res))

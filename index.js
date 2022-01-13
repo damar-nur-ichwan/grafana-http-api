@@ -119,4 +119,11 @@ module.exports = {
     get_settings                            : require('./features/get_settings'),
     renew_session_based_on_remember_cookie  : require('./features/renew_session_based_on_remember_cookie'),
     grafana_health_information              : require('./features/grafana_health_information'),
+    search_playlist                         : require('./features/search_playlist'),
+    get_one_playlist                        : require('./features/get_one_playlist'),
+    get_playlist_items                      : require('./features/get_playlist_items'),
+    get_playlist_dashboards                 : require('./features/get_playlist_dashboards'),
+    create_playlist                         : require('./features/create_playlist'),
+    update_playlist                         : require('./features/update_playlist'),
+    delete_playlist                         : require('./features/delete_playlist'),
 }
