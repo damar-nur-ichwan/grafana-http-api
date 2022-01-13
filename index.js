@@ -99,4 +99,10 @@ module.exports = {
     update_current_user_prefs               : require('./features/update_current_user_prefs'),
     get_current_org_prefs                   : require('./features/get_current_org_prefs'),
     update_current_org_prefs                : require('./features/update_current_org_prefs'),
+    create_snapshot                         : require('./features/create_snapshot'),
+    get_snapshots_list                      : require('./features/get_snapshots_list'),
+    get_snapshot_by_key                     : require('./features/get_snapshot_by_key'),
+    delete_snapshot_by_key                  : require('./features/delete_snapshot_by_key'),
+    delete_snapshot_by_deleteKey            : require('./features/delete_snapshot_by_deleteKey'),
+    
 }
