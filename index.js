@@ -112,4 +112,5 @@ module.exports = {
     update_library_element                  : require('./features/update_library_element'),
     delete_library_element                  : require('./features/delete_library_element'),
     send_a_report                           : require('./features/send_a_report'),
+    create_short_url                        : require('./features/create_short_url'),
 }
