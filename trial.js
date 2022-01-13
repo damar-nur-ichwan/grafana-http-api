@@ -208,4 +208,7 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.check_license_availability()
 // index.manually_force_license_refresh()
 // index.remove_license_from_database("http://play.grafana.org/")
+// index.get_settings()
+// index.renew_session_based_on_remember_cookie()
+// index.grafana_health_information()
 .then(res=>console.log(res)).catch(res=>console.log(res))

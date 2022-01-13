@@ -116,4 +116,7 @@ module.exports = {
     check_license_availability              : require('./features/check_license_availability'),
     manually_force_license_refresh          : require('./features/manually_force_license_refresh'),
     remove_license_from_database            : require('./features/remove_license_from_database'),
+    get_settings                            : require('./features/get_settings'),
+    renew_session_based_on_remember_cookie  : require('./features/renew_session_based_on_remember_cookie'),
+    grafana_health_information              : require('./features/grafana_health_information'),
 }
