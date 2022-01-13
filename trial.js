@@ -182,5 +182,9 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 //         permission: 4
 //     }
 // ])
-index.folder_or_dashboard_search({query:'HOME'})
+// index.folder_or_dashboard_search({query:'UPDATE'})
+// index.get_current_user_prefs()
+// index.update_current_user_prefs('dark',0,'utc')
+// index.get_current_user_prefs()
+// index.update_current_org_prefs('light',0,'utc')
 .then(res=>console.log(res)).catch(res=>console.log(res))

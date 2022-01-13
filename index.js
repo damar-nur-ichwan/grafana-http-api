@@ -95,4 +95,8 @@ module.exports = {
     get_folder_permissions                  : require('./features/get_folder_permissions'),
     update_folder_permission                : require('./features/update_folder_permission'),
     folder_or_dashboard_search              : require('./features/folder_or_dashboard_search'),
+    get_current_user_prefs                  : require('./features/get_current_user_prefs'),
+    update_current_user_prefs               : require('./features/update_current_user_prefs'),
+    get_current_org_prefs                   : require('./features/get_current_org_prefs'),
+    update_current_org_prefs                : require('./features/update_current_org_prefs'),
 }
