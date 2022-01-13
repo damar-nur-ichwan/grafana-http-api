@@ -205,4 +205,7 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.delete_library_element('trial1')
 // index.send_a_report(1,{useEmailsFromReport:true})
 // index.create_short_url('d/TxKARsmGz/new-dashboard?orgId=1&from=1599389322894&to=1599410922894')
+// index.check_license_availability()
+// index.manually_force_license_refresh()
+// index.remove_license_from_database("http://play.grafana.org/")
 .then(res=>console.log(res)).catch(res=>console.log(res))

@@ -113,4 +113,7 @@ module.exports = {
     delete_library_element                  : require('./features/delete_library_element'),
     send_a_report                           : require('./features/send_a_report'),
     create_short_url                        : require('./features/create_short_url'),
+    check_license_availability              : require('./features/check_license_availability'),
+    manually_force_license_refresh          : require('./features/manually_force_license_refresh'),
+    remove_license_from_database            : require('./features/remove_license_from_database'),
 }
