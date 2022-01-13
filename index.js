@@ -104,5 +104,11 @@ module.exports = {
     get_snapshot_by_key                     : require('./features/get_snapshot_by_key'),
     delete_snapshot_by_key                  : require('./features/delete_snapshot_by_key'),
     delete_snapshot_by_deleteKey            : require('./features/delete_snapshot_by_deleteKey'),
-    
+    get_all_library_elements                : require('./features/get_all_library_elements'),    
+    get_library_element_by_uid              : require('./features/get_library_element_by_uid'),
+    get_library_element_by_name             : require('./features/get_library_element_by_name'),
+    get_library_element_connections         : require('./features/get_library_element_connections'),
+    create_library_element                  : require('./features/create_library_element'),
+    update_library_element                  : require('./features/update_library_element'),
+    delete_library_element                  : require('./features/delete_library_element'),
 }

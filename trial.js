@@ -192,4 +192,15 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.get_snapshot_by_key('lO1yZWuGmKyTq7oOEvIMtOZ2ofrLBEZR')
 // index.delete_snapshot_by_key('H754SLBEHHlWeBpRBp4JLkfD6w3Irsx2')
 // index.delete_snapshot_by_deleteKey('F6BBYGObvwzbjhA37zYHZgpNk6y2KyDH')
+// index.get_all_library_elements({searchString:'s'})
+// index.get_library_element_by_uid('trial')
+// index.get_library_element_by_name('trial')
+// index.get_library_element_connections('trial')
+// index.create_library_element('trial1',5,'trial library element lagi',1,{description:'hanya percobaan'})
+// index.update_library_element('trial',{
+//     name: 'hanya coba-coba',
+//     version: 1,
+//     kind: 1
+// })
+// index.delete_library_element('trial1')
 .then(res=>console.log(res)).catch(res=>console.log(res))
