@@ -241,4 +241,29 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.remove_member_from_team(2,2)
 // index.get_team_preferences(2)
 // index.update_team_preferences(2,'dark',0,'utc')
+// index.search_users({
+//     perpage:2,
+//     page:0
+// })
+// index.search_users_with_paging({
+//     perpage: 10,
+//     page: 1,
+//     query:''
+// })
+// index.get_single_user_by_id(1)
+// index.get_single_user_by_username_or_email('admin')
+// index.user_update(1,'admin@localhost','damar','damar','dark')
+// index.get_orgs(1)
+// index.get_teams(1)
+// index.get_actual_user()
+// index.change_password('admin','101010')
+// index.switch_org_context(1)
+// index.switch_user_context_for_specified_user(1,1)
+// index.switch_user_context_for_signed_in_user(1)
+// index.orgs_of_actual_user()
+// index.get_user_teams()
+// index.star_a_dashboard(5)
+// index.unstar_a_dashboard(5)
+// index.auth_tokens_of_the_actual_user()
+// index.revoke_auth_tokens_of_the_actual_user(1)
 .then(res=>console.log(res)).catch(res=>console.log(res))
