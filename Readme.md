@@ -163,10 +163,295 @@ grafana.compare_dashboard_versions(
 - **first_dashboard -** an object representing the base dashboard version
 - **second_dashboard -** an object representing the new dashboard version
 # Dashboard permissions API
+This API can be used to update/get the permissions for a dashboard.
+
+Permissions with dashboardId=-1 are the default permissions for users with the Viewer and Editor roles. Permissions can be set for a user, a team or a role (Viewer or Editor). Permissions cannot be set for Admins - they always have access to everything.
+
+The permission levels for the permission field:
+
+1 = View
+2 = Edit
+4 = Admin
+## Get permissions for a dashboard
+Gets all existing permissions for the dashboard with the given ```dashboardId```
+```js
+grafana.get_dashboard_permissions(
+    dashboardId?: number
+    )
+```
+## Update permissions for a dashboard
+Updates permissions for a dashboard. This operation will remove existing permissions if they’re not included in the request.
+```js
+grafana.update_dashboard_permissions(
+    dashboardId?: number, 
+    items?: [
+        { 
+            role: string,
+            permission: number,
+        },{ 
+            role: string,
+            permission: number,
+        },{
+            teamId: number,
+            permission: number,
+        },{
+            userId: number;
+            permission: number,
+        },
+    ]
+```
+- **items -** The permission items to add/update. Items that are omitted from the list will be removed.
 # Folder API
+- The uid can have a maximum length of 40 characters.
+- The General folder (id=0) is special and is not part of the Folder API which means that you cannot use this API for retrieving information about the General folder.
+## Get all folders
+Returns all folders that the authenticated user has permission to view. 
+```js
+grafana.get_all_folders()
+```
+## Get folder by uid
+Will return the folder given the folder uid.
+```js
+grafana.get_folder_by_uid(
+    uid?: string
+    )
+```
+## Create folder
+Creates a new folder.
+```js
+grafana.create_folder(
+    uid?: string, 
+    title?: string
+    )
+```
+- **uid –** Optional unique identifier.
+- **title –** The title of the folder.
+## Update Folder
+Updates an existing folder identified by uid.
+```js
+grafana.update_folder(
+    uid?: string, 
+    title?: string, 
+    optional?: { 
+        overwrite: boolean; 
+        version: number; 
+        }
+    )
+```
+- **uid –** Provide another unique identifier than stored to change the unique identifier.
+- **title –** The title of the folder.
+- **version –** Provide the current version to be able to update the folder. Not needed if overwrite=true.
+- **overwrite –** Set to true if you want to overwrite existing folder with newer version.
+## Delete Folder
+Deletes an existing folder identified by UID along with all dashboards (and their alerts) stored in the folder. This operation cannot be reverted.
+```js
+grafana.delete_folder(
+    uid?: string
+    )
+```
+## Get folder by id
+Will return the folder identified by id.
+```js
+grafana.get_folder_by_id(
+    id?: number
+    )
+```
 # Folder permissions API
+This API can be used to update/get the permissions for a folder.
+
+Permissions with folderId=-1 are the default permissions for users with the Viewer and Editor roles. Permissions can be set for a user, a team or a role (Viewer or Editor). Permissions cannot be set for Admins - they always have access to everything.
+
+The permission levels for the permission field:
+
+1 = View
+2 = Edit
+4 = Admin
+## Get permissions for a folder
+Gets all existing permissions for the folder with the given ```uid```.
+```js
+grafana.get_folder_permissions(
+    uid?: string
+    )
+```
+## Update permissions for a folder
+Updates permissions for a folder. This operation will remove existing permissions if they’re not included in the request.
+```js
+grafana.update_folder_permission(
+    uid?: string, 
+    items?: [
+        { 
+            role: string,
+            permission: number
+        }, { 
+            role: string,
+            permission: number
+        }, {
+            
+        }, {
+            teamId: number,
+            permission: number
+        }, {
+            userId: number,
+            permission: number
+        }
+    ])
+```
+- **items -** The permission items to add/update. Items that are omitted from the list will be removed.
 # Folder/dashboard search API
+## Search folders and dashboards
+Query parameters:
+
+- **query –** Search Query
+- **tag –** List of tags to search for
+- **type –** Type to search for, dash-folder or dash-db
+- **dashboardIds –** List of dashboard id’s to search for
+- **folderIds –** List of folder id’s to search in for dashboards
+- **starred –** Flag indicating if only starred Dashboards should be returned
+- **limit –** Limit the number of returned results (max 5000)
+- **page –** Use this parameter to access hits beyond limit. Numbering starts at 1. limit param acts as page size. Only available in Grafana v6.2+.
+```js
+grafana.folder_or_dashboard_search(
+    optional?: { 
+        query: string; 
+        tag: string; 
+        type: string; 
+        dashboardIds: number; 
+        folderIds: number; 
+        starred: boolean; 
+        limit: number; 
+        page: string; 
+        }
+```
 # Data source API
+* If you are running Grafana Enterprise and have **Fine-grained access** control enabled, for some endpoints you would need to have relevant permissions. Refer to specific resources to understand what permissions are required.
+## Get all data sources
+```js
+grafana.get_all_datasources()
+```
+## Get a single data source by Id
+```js
+grafana.get_datasource_by_id(
+    datasourceId?: number
+    )
+```
+## Get a single data source by UID
+```js
+grafana.get_datasource_by_uid(
+    uid?: string
+    )
+```
+## Get a single data source by Name
+```js
+grafana.get_datasource_by_name(
+    name?: string
+    )
+```
+## Get data source Id by Name
+```js
+grafana.get_datasource_id_by_name(
+    name?: string
+    )
+```
+## Create a data source
+```js
+grafana.create_datasource(
+    orgId?: number, 
+    name?: string, 
+    type?: string, 
+    datasource_url?: string, 
+    access?: string, 
+    optional?: { 
+        isDefault: boolean; 
+        basicAuth: boolean; 
+        basicAuthUser: string; 
+        secureJsonData: { 
+            accessKey: string; 
+            secretKey: string; 
+            basicAuthPassword: string; 
+            }; 
+        jsonData: { 
+            httpMethod: string; 
+            authType: string; 
+            defaultRegion: string; 
+            }; 
+        }
+    )
+```
+* By defining ```password``` and ```basicAuthPassword``` under ```secureJsonData``` Grafana encrypts them securely as an encrypted blob in the database. The response then lists the encrypted fields under ```secureJsonFields```
+## Update an existing data source
+```js
+grafana.update_datasouce_by_id(
+    datasourceId?: number, 
+    Name?: string, 
+    Type?: string, 
+    datasource_url?: string, 
+    Access?: string, 
+    optional?: { 
+        uid: string; 
+        password: string; 
+        user: string; 
+        database: string; 
+        basicAuth: boolean; 
+        basicAuthUser: string; 
+        basicAuthPassword: string; 
+        withCredentials: boolean; 
+        isDefault: boolean; 
+        jsonData: { ...; }; 
+        secureJsonData: { ...; }; 
+        }
+    )
+```
+* Similar to **creating a data source**, ```password``` and ```basicAuthPassword``` should be defined under ```secureJsonData``` in order to be stored securely as an encrypted blob in the database. Then, the encrypted fields are listed under ```secureJsonFields``` section in the response.
+## Delete an existing data source by id
+```js
+grafana.delete_datasource_by_id(
+    datasourceId?: number
+    )
+```
+## Delete an existing data source by UID
+```js
+grafana.delete_datasource_by_uid(
+    uid?: string
+    )
+```
+## Delete an existing data source by Name
+```js
+grafana.delete_datasource_by_name(
+    name?: string
+    )
+```
+## Data source proxy calls
+Proxies all calls to the actual data source.
+```js
+grafana.datasource_proxy_calls(
+    datasourceId?: number
+    )
+```
+## Query a data source by ID
+Queries a data source having backend implementation.
+* Most of Grafana’s builtin data sources have backend implementation.
+```js
+grafana.query_datasource_by_id(
+    from?: number, 
+    to?: number, 
+    queries?: [
+        { 
+            refId: string; 
+            intervalMs: number; 
+            maxDataPoints: number; 
+            datasourceId: number; 
+            rawSql: string; 
+            format: string; 
+        },
+    ])
+```
+* The ```from```, ```to```, and ```queries``` properties are required.
+- **from/to –** Should be either absolute in epoch timestamps in milliseconds or relative using Grafana time units. For example, now-1h.
+- **queries.refId –** Specifies an identifier of the query. Is optional and default to “A”.
+- **queries.datasourceId –** Specifies the data source to be queried. Each query in the request must have an unique datasourceId.
+- **queries.maxDataPoints -** Species maximum amount of data points that dashboard panel can render. Is optional and default to 100.
+- **queries.intervalMs -** Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000.
+In addition, each data source has its own specific properties that should be added in a request.
 # Organization API
 # Snapshot API
 # Annotations API
