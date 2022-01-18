@@ -160,8 +160,8 @@ grafana.compare_dashboard_versions(
         }
     )
 ```
-- **base -** an object representing the base dashboard version
-- **new -** an object representing the new dashboard version
+- **first_dashboard -** an object representing the base dashboard version
+- **second_dashboard -** an object representing the new dashboard version
 # Dashboard permissions API
 # Folder API
 # Folder permissions API
