@@ -12,7 +12,7 @@ module.exports = function (dashboard=JSON,optional={folderId:0,folderUid:'',mess
         }
     }
 
-    const data = { dashboard}
+    const data = {dashboard}
 
     if (optional !== {}){
         const keys = Object.keys(optional)

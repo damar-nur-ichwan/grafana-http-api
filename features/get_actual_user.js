@@ -11,6 +11,6 @@ module.exports = function (){
         }
     }
     return axios.get(url,config)
-    .then(res=>{return res.data})
+    .then(res=>{console.log(res);return res.data})
     .catch(res=>{return res.response.data})
 }

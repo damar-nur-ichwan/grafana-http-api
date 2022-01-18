@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { default: axios } = require("axios");
 
-module.exports = function (name="",type="",datasource_url='',access='',optional={
+module.exports = function (orgId=0,name="",type="",datasource_url='',access='',optional={
     isDefault: false,
     basicAuth: false,
     basicAuthUser: '',
@@ -22,6 +22,7 @@ module.exports = function (name="",type="",datasource_url='',access='',optional=
         }
     }
     let data = {
+        orgId,
         name,
         type,
         url: datasource_url,

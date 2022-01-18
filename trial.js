@@ -282,4 +282,4 @@ const suprboard_kubernetes_info = require('./dashboards/suprboard_kubernetes_inf
 // index.add_org_user(1,'damar','Admin')
 // index.update_org_user(1,1,'Admin')
 // index.delete_org_user(1,1)
-.then(res=>console.log(res)).catch(res=>console.log(res))
+// .then(res=>console.log(res)).catch(res=>console.log(res))
