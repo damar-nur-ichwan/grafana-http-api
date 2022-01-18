@@ -169,8 +169,8 @@ Permissions with dashboardId=-1 are the default permissions for users with the V
 
 The permission levels for the permission field:
 
-1 = View
-2 = Edit
+1 = View,
+2 = Edit,
 4 = Admin
 ## Get permissions for a dashboard
 Gets all existing permissions for the dashboard with the given ```dashboardId```
@@ -263,8 +263,8 @@ Permissions with folderId=-1 are the default permissions for users with the View
 
 The permission levels for the permission field:
 
-1 = View
-2 = Edit
+1 = View,
+2 = Edit,
 4 = Admin
 ## Get permissions for a folder
 Gets all existing permissions for the folder with the given ```uid```.
@@ -323,7 +323,7 @@ grafana.folder_or_dashboard_search(
         }
 ```
 # Data source API
-* If you are running Grafana Enterprise and have **Fine-grained access** control enabled, for some endpoints you would need to have relevant permissions. Refer to specific resources to understand what permissions are required.
+If you are running Grafana Enterprise and have **Fine-grained access** control enabled, for some endpoints you would need to have relevant permissions. Refer to specific resources to understand what permissions are required.
 ## Get all data sources
 ```js
 grafana.get_all_datasources()
@@ -377,7 +377,7 @@ grafana.create_datasource(
         }
     )
 ```
-* By defining ```password``` and ```basicAuthPassword``` under ```secureJsonData``` Grafana encrypts them securely as an encrypted blob in the database. The response then lists the encrypted fields under ```secureJsonFields```
+By defining ```password``` and ```basicAuthPassword``` under ```secureJsonData``` Grafana encrypts them securely as an encrypted blob in the database. The response then lists the encrypted fields under ```secureJsonFields```
 ## Update an existing data source
 ```js
 grafana.update_datasouce_by_id(
@@ -401,7 +401,7 @@ grafana.update_datasouce_by_id(
         }
     )
 ```
-* Similar to **creating a data source**, ```password``` and ```basicAuthPassword``` should be defined under ```secureJsonData``` in order to be stored securely as an encrypted blob in the database. Then, the encrypted fields are listed under ```secureJsonFields``` section in the response.
+Similar to **creating a data source**, ```password``` and ```basicAuthPassword``` should be defined under ```secureJsonData``` in order to be stored securely as an encrypted blob in the database. Then, the encrypted fields are listed under ```secureJsonFields``` section in the response.
 ## Delete an existing data source by id
 ```js
 grafana.delete_datasource_by_id(
@@ -429,7 +429,7 @@ grafana.datasource_proxy_calls(
 ```
 ## Query a data source by ID
 Queries a data source having backend implementation.
-* Most of Grafana’s builtin data sources have backend implementation.
+*Most of Grafana’s builtin data sources have backend implementation.*
 ```js
 grafana.query_datasource_by_id(
     from?: number, 
@@ -445,7 +445,7 @@ grafana.query_datasource_by_id(
         },
     ])
 ```
-* The ```from```, ```to```, and ```queries``` properties are required.
+*The ```from```, ```to```, and ```queries``` properties are required.*
 - **from/to –** Should be either absolute in epoch timestamps in milliseconds or relative using Grafana time units. For example, now-1h.
 - **queries.refId –** Specifies an identifier of the query. Is optional and default to “A”.
 - **queries.datasourceId –** Specifies the data source to be queried. Each query in the request must have an unique datasourceId.
@@ -453,6 +453,120 @@ grafana.query_datasource_by_id(
 - **queries.intervalMs -** Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000.
 In addition, each data source has its own specific properties that should be added in a request.
 # Organization API
+*If you are running Grafana Enterprise and have Fine-grained access control enabled, for some endpoints you would need to have relevant permissions. Refer to specific resources to understand what permissions are required.*
+## Get current Organization
+```js
+grafana.get_current_org()
+```
+## Get all users within the current organization
+Returns all org users within the current organization. Accessible to users with org admin role.
+```js
+grafana.get_current_org_users()
+```
+## Get all users within the current organization (lookup)
+Returns all org users within the current organization, but with less detailed information. Accessible to users with org admin role, admin in any folder or admin of any team. Mainly used by Grafana UI for providing list of users when adding team members and when editing folder/dashboard permissions.
+```js
+grafana.get_current_org_users_lookup()
+```
+## Updates the given user
+```js
+grafana.updates_the_given_user(
+    userId?: number, 
+    role?: string
+    )
+```
+## Delete user in current organization
+```js
+grafana.delete_user_in_current_org(
+    userId?: number
+    )
+```
+## Update current Organization
+```js
+grafana.update_current_org(
+    name?: string
+    )
+```
+## Add a new user to the current organization
+Adds a global user to the current organization.
+```js
+grafana.add_user_to_the_current_org(
+    role?: number, 
+    loginOrEmail?: number
+    )
+```
+## Get Organization by Id
+```js
+grafana.get_org_by_id(
+    orgId?: number
+    )
+```
+## Get Organization by Name
+```js
+grafana.get_org_by_name(
+    name?: string
+    )
+```
+## Create Organization
+```js
+grafana.create_org(
+    new_org_name?: string, 
+    role?: string
+    )
+```
+Note: The api will work in the following two ways
+1. Need to set GF_USERS_ALLOW_ORG_CREATE=true
+2. Set the config value users.allow_org_create to true in ini file
+## Search all Organizations
+```js
+grafana.search_all_orgs(
+    perpage?: number, 
+    page?: number
+    )
+```
+*Default value for the ```perpage``` parameter is 1000 and for the ```page``` parameter is 0.*
+## Update Organization Name
+```js
+grafana.update_org(
+    orgId?: number, 
+    name?: string
+    )
+```
+## Delete Organization
+```js
+grafana.delete_org(
+    orgId?: number
+    )
+```
+## Get Users in Organization
+```js
+grafana.get_org_users(
+    orgId?: number
+    )
+```
+## Add User in Organization
+```js
+grafana.add_org_user(
+    orgId?: number, 
+    loginOrEmail?: string, 
+    role?: string
+    )
+```
+## Update Users in Organization
+```js
+grafana.update_org_user(
+    orgId?: number, 
+    userId?: number, 
+    role?: string
+    )
+```
+## Delete User in Organization
+```js
+grafana.delete_org_user(
+    orgId?: number, 
+    userId?: number
+    )
+```
 # Snapshot API
 # Annotations API
 # Playlists API
