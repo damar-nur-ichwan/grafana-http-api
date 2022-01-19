@@ -3,7 +3,7 @@ const { default: axios } = require("axios");
 
 module.exports = function (user_id=0){
     const host = `http://${process.env.GRAFANA_USERNAME}:${process.env.GRAFANA_PASSWORD}@${process.env.GRAFANA_HOST}`
-    const path = `/api/admin/users/${user_id}/auth-tokens`
+    const path = `/api/admin/users/${user_id}/revoke-auth-token`
     const url = host + path
     return axios.post(url)
     .then(res=>{return res.data})

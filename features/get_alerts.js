@@ -1,9 +1,30 @@
 require('dotenv').config()
 const { default: axios } = require("axios");
 
-module.exports = function(){
+module.exports = function(optional={
+    dashboardId=0,
+    panelId=0,
+    query='',
+    state='',
+    limit=0,
+    folderId=0,
+    dashboardQuery='',
+    dashboardTag=''
+}){
+    let parameters = `?`
+    if (optional !== {}){
+        const keys = Object.keys(optional)
+        const value = Object.values(optional)
+        for(let i; i <value.length; i++){
+            value.includes(' ')?value.replace(/ /g,'%20'):{};
+        }
+        for(let i = 0; i < keys.length; i++){
+            parameters += `${keys[i]}=${value[i]}`
+            i != keys.length-1? parameters += '&':'';
+        }
+    }
     const host = `http://${process.env.GRAFANA_USERNAME}:${process.env.GRAFANA_PASSWORD}@${process.env.GRAFANA_HOST}`
-    const path = `/api/alerts/`
+    const path = `/api/alerts${parameters}`
     const url = host + path
     const config = {
         headers : {

@@ -774,9 +774,470 @@ grafana.delete_playlist(
     )
 ```
 # Alerting API
+*This topic is relevant for the legacy dashboard alerts only.*
+You can use the Alerting API to get information about legacy dashboard alerts and their states but this API cannot be used to modify the alert. To create new alerts or modify them you need to update the dashboard JSON that contains the alerts.
+## Get alerts
+```js
+grafana.get_alerts(
+    optional?: { 
+        dashboardId: number; 
+        panelId: number; 
+        query: string; 
+        state: string; 
+        limit: number; 
+        folderId: number; 
+        dashboardQuery: string; dashboardTag: string; 
+        }
+    )
+```
+- **dashboardId –** Limit response to alerts in specified dashboard(s). You can specify multiple dashboards, e.g. dashboardId=23&dashboardId=35.
+- **panelId –** Limit response to alert for a specified panel on a dashboard.
+- **query -** Limit response to alerts having a name like this value.
+- **state -** Return alerts with one or more of the following alert states: ALL,no_data, paused, alerting, ok, pending. To specify multiple states use the following format: ?state=paused&state=alerting
+- **limit -** Limit response to X number of alerts.
+- **folderId –** Limit response to alerts of dashboards in specified folder(s). You can specify multiple folders, e.g. folderId=23&folderId=35.
+- **dashboardQuery -** Limit response to alerts having a dashboard name like this value.
+- **dashboardTag -** Limit response to alerts of dashboards with specified tags.
+## Get alert by id
+```js
+grafana.get_alert_by_id(
+    alert_id?: number
+    )
+```
+**Important Note:** “evalMatches” data is cached in the db when and only when the state of the alert changes (e.g. transitioning from “ok” to “alerting” state).
+
+If data from one server triggers the alert first and, before that server is seen leaving alerting state, a second server also enters a state that would trigger the alert, the second server will not be visible in “evalMatches” data.
+## Pause alert by id
+```js
+grafanapause_alert_by_id(
+    alert_id?: number, 
+    paused?: boolean
+    )
+```
+- **paused –** Can be true or false. True to pause an alert. False to unpause an alert.
 # Alert notification channels API
+The uid can have a maximum length of 40 characters.
+## Get all notification channels
+Returns all notification channels that the authenticated user has permission to view.
+```js
+grafana.get_all_notification_channels()
+```
+## Get all notification channels (lookup)
+Returns all notification channels, but with less detailed information. Accessible by any authenticated user and is mainly used by providing alert notification channels in Grafana UI when configuring alert rule.
+```js
+grafana.get_all_notification_channels_lookup()
+```
+## Get notification channel by uid
+Returns the notification channel given the notification channel uid.
+```js
+grafana.get_notification_channel_by_uid(
+    uid?: string
+    )
+```
+## Get notification channel by id
+Returns the notification channel given the notification channel id.
+```js
+grafana.get_notification_channel_by_id(
+    id?: number
+    )
+```
+## Create notification channel
+You can find the full list of supported notifiers on the alert notifiers page.
+```js
+grafana.create_notification_channel(
+    name?: string, 
+    type?: string, 
+    isDefault?: boolean, 
+    sendReminder?: boolean, 
+    frequency?: string, 
+    settings?: {}
+    )
+```
+## Update notification channel by uid
+Updates an existing notification channel identified by uid.
+```js
+grafana.update_notification_channel_by_uid(
+    uid?: string, 
+    name?: string, 
+    type?: string, 
+    isDefault?: boolean, 
+    sendReminder?: boolean, 
+    frequency?: string, 
+    settings?: {}
+    )
+```
+## Update notification channel by id
+Updates an existing notification channel identified by id.
+```js
+grafana.update_notification_channel_by_id(
+    id?: number, 
+    name?: string, 
+    type?: string, 
+    isDefault?: boolean, 
+    sendReminder?: boolean, 
+    frequency?: string, 
+    settings?: {}
+    )
+```
+## Delete alert notification by uid
+Deletes an existing notification channel identified by uid.
+```js
+grafana.delete_notification_channel_by_uid(
+    uid?: string
+    )
+```
+## Delete alert notification by id
+Deletes an existing notification channel identified by id.
+```js
+grafana.delete_notification_channel_by_id(
+    id?: number
+    )
+```
+## Test notification channel
+Sends a test notification message for the given notification channel type and settings. You can find the full list of supported notifiers at the alert notifiers page.
+```js
+grafana.test_notification_channel(
+    type?: string, 
+    settings?: {}
+    )
+```
 # User API
+## Search Users
+```js
+grafana.search_users(
+    optional?: { 
+        perpage: number; 
+        page: number; 
+        }
+    )
+```
+Default value for the ```perpage``` parameter is ```1000``` and for the ```page``` parameter is ```1```. Requires basic authentication and that the authenticated user is a Grafana Admin.
+## Search Users with Paging
+```js
+grafana.search_users_with_paging(
+    optional?: { 
+        perpage: number; 
+        page: number; 
+        query: string; 
+        }
+    )
+```
+Default value for the ```perpage``` parameter is ```1000``` and for the ```page``` parameter is ```1```. The ```query``` parameter is optional and it will return results where the ```query``` value is contained in one of the ```name```, login or email fields.
+## Get single user by Id
+```js
+grafana.get_single_user_by_id(
+    id?: number
+    )
+```
+## Get single user by Username(login) or Email
+```js
+grafana.get_single_user_by_username_or_email(
+    username_or_email?: string
+    )
+```
+## User Update
+```js
+grafana.user_update(
+    id?: number, 
+    email?: string, 
+    name?: string, 
+    login?: string, 
+    theme?: string
+    )
+```
+## Get Organizations for user
+```js
+grafana.get_user_orgs(
+    userId?: number
+    )
+```
+## Get Teams for user
+```js
+grafana.get_user_teams(
+    userId?: number
+    )
+```
+## Actual User
+```js
+grafana.get_actual_user()
+```
+## Change Password
+Changes the password for the user.
+```js
+grafana.change_password(
+    oldPassword?: string, 
+    newPassword?: string
+    )
+```
+## Switch user context for a specified user
+Switch user context to the given organization.
+```js
+grafana.switch_user_context_for_specified_user(
+    userId?: number, 
+    organizationId?: number
+    )
+```
+## Switch user context for signed in user
+Switch user context to the given organization.
+```js
+grafana.switch_user_context_for_signed_in_user(
+    organizationId?: number
+    )
+```
+## Organizations of the actual User
+Return a list of all organizations of the current user. 
+```js
+grafana.orgs_of_actual_user()
+```
+## Teams that the actual User is member of
+Return a list of all teams that the current user is member of.
+```js
+grafana.get_actual_user_teams()
+```
+## Star a dashboard
+Stars the given Dashboard for the actual user.
+```js
+grafana.star_a_dashboard(
+    dashboardId?: number
+    )
+```
+## Unstar a dashboard
+Deletes the starring of the given Dashboard for the actual user.
+```js
+grafana.unstar_a_dashboard(
+    dashboardId?: number
+    )
+```
+## Auth tokens of the actual User
+Return a list of all auth tokens (devices) that the actual user currently have logged in from.
+```js
+grafana.auth_tokens_of_the_actual_user()
+```
+## Revoke an auth token of the actual User
+Revokes the given auth token (device) for the actual user. User of issued auth token (device) will no longer be logged in and will be required to authenticate again upon next activity.
+```js
+grafana.revoke_auth_tokens_of_the_actual_user(
+    authTokenId?: number
+    )
+```
 # Team API
+This API can be used to create/update/delete Teams and to add/remove users to Teams. All actions require that the user has the Admin role for the organization.
+## Team Search With Paging
+```js
+grafana.team_search(
+    optional?: { 
+        perpage: string; 
+        page: string; 
+        query: string; 
+        name: string; 
+        }
+    )
+```
+Default value for the ```perpage``` parameter is 1000 and for the ```page``` parameter is 1. The ```name``` parameter returns a single team if the parameter matches the name field.
+## Get Team By Id
+```js
+grafana.get_team_by_id(
+    id?: number
+    )
+```
+## Add Team
+The Team ```name``` needs to be unique. ```name``` is required and ```email```,```orgId``` is optional.
+```js
+grafana.add_team(
+    name?: string, 
+    email?: string, 
+    orgId?: number
+    )
+```
+## Update Team
+There are two fields that can be updated for a team: ```name``` and ```email```.
+```js
+grafana.update_team(
+    id?: number, 
+    name?: string, 
+    email?: string
+    )
+```
+## Delete Team by Id
+```js
+grafana.delete_team_by_id(
+    id?: number
+    )
+```
+## Get Team Members
+```js
+grafana.get_team_members(
+    teamId?: number
+    )
+```
+## Add Team Member
+```js
+grafana.add_team_member(
+    teamId?: number, 
+    userId?: number
+    )
+```
+## Remove Member From Team
+```js
+grafana.remove_member_from_team(
+    teamId?: number, 
+    userId?: number
+    )
+```
+## Get Team Preferences
+```js
+grafana.get_team_preferences(
+    teamId?: number
+    )
+```
+## Update Team Preferences
+```js
+grafana.update_team_preferences(
+    teamId?: number, 
+    theme?: string, 
+    homeDashboardId?: number, 
+    timezone?: string
+    )
+```
+- **theme -** One of: light, dark, or an empty string for the default theme
+- **homeDashboardId -** The numerical :id of a dashboard, default: 0
+- **timezone -** One of: utc, browser, or an empty string for the default
+Omitting a key will cause the current value to be replaced with the system default value.
 # Admin API
+## Fetch settings
+```js
+grafana.fetch_settings()
+```
+## Update Settings
+Updates / removes and reloads database settings. You must provide either ```update_settings```, ```removals_settings``` or both.
+
+This endpoint only supports changes to ```auth.saml``` configuration.
+```js
+grafana.update_settings(
+    update_settings?: {}, removals_settings?: {}
+    )
+```
+## Grafana Stats
+```js
+grafana.grafana_stats()
+```
+## Global Users
+Create new user.
+```js
+grafana.global_user(
+    name?: string, 
+    email?: string, 
+    login?: string, 
+    password?: string, 
+    org_id?: number
+    )
+```
+## Password for User
+Change password for a specific user.
+```js
+grafana.password_for_user(
+    user_id?: number, 
+    new_password?: string
+    )
+```
+## Permissions
+```js
+grafana.permissions(
+    user_id?: number, 
+    update_permissions?: {}
+    )
+```
+## Delete global User
+```js
+grafana.delete_global_user(
+    user_id?: number
+    )
+```
+## Pause all alerts
+```js
+grafana.pause_all_alerts(
+    paused?: boolean
+    )
+```
+- **paused** – If true then all alerts are to be paused, false unpauses all alerts.
+## Auth tokens for User
+Return a list of all auth tokens (devices) that the user currently have logged in from.
+```js
+grafana.auth_tokens_for_user(
+    user_id?: number
+    )
+```
+## Revoke auth token for User
+Revokes the given auth token (device) for the user. User of issued auth token (device) will no longer be logged in and will be required to authenticate again upon next activity.
+```js
+grafana.revoke_auth_token_for_user(user_id?: number)
+```
+## Logout User
+Logout user revokes all auth tokens (devices) for the user. User of issued auth tokens (devices) will no longer be logged in and will be required to authenticate again upon next activity.
+```js
+grafana.logout_user(
+    user_id?: number
+    )
+```
+## Reload provisioning configurations
+Reloads the provisioning config files for specified type and provision entities again. It won’t return until the new provisioned entities are already stored in the database. In case of dashboards, it will stop polling for changes in dashboard files and then restart it with new configurations after returning.
+```js
+grafana.reload_provisioning_configs.access_control()
+grafana.reload_provisioning_configs.dashboards()
+grafana.reload_provisioning_configs.datasources()
+grafana.reload_provisioning_configs.notifications()
+grafana.reload_provisioning_configs.plugins()
+grafana.reload_provisioning_configs.all()
+```
+## Reload LDAP configuration
+Reloads the LDAP configuration.
+```js
+grafana.reload_ldap_config()
+```
 # Preferences API
+## User and Org Preferences API
+Keys:
+- **theme -** One of: light, dark, or an empty string for the default theme
+- **homeDashboardId -** The numerical :id of a favorited dashboard, default: 0
+- **timezone -** One of: utc, browser, or an empty string for the default
+Omitting a key will cause the current value to be replaced with the system default value.
+## Get Current User Prefs
+```js
+grafana.get_current_user_prefs()
+```
+## Update Current User Prefs
+```js
+grafana.update_current_user_prefs(
+    theme?: string, 
+    homeDashboardId?: number, 
+    timezone?: string
+    )
+```
+## Get Current Org Prefs
+```js
+grafana.get_current_org_prefs()
+```
+## Update Current Org Prefs
+```js
+grafana.update_current_org_prefs(
+    theme?: number, 
+    homeDashboardId?: number, 
+    timezone?: string
+    )
+```
 # Other API
+## Frontend Settings API
+**Get Settings**
+```js
+grafana.get_settings()
+```
+## Login API 
+**Renew session based on remember cookie**
+```js
+grafana.grafana.renew_session_based_on_remember_cookie()
+```
+## Health API
+**Returns health information about Grafana**
+```js
+grafana.grafana_health_information()
+```

@@ -13,7 +13,7 @@ module.exports = {
     permissions                             : require('./features/permissions'),
     delete_global_user                      : require('./features/delete_global_user'),
     pause_all_alerts                        : require('./features/pause_all_alerts'),
-    auth_token_for_user                     : require('./features/auth_token_for_user'),
+    auth_tokens_for_user                     : require('./features/auth_tokens_for_user'),
     revoke_auth_token_for_user              : require('./features/revoke_auth_token_for_user'),
     logout_user                             : require('./features/logout_user'),
     reload_provisioning_configs             : require('./features/reload_provisioning_configs'),
@@ -169,4 +169,6 @@ module.exports = {
     add_org_user                            : require('./features/add_org_user'),
     update_org_user                         : require('./features/update_org_user'),
     delete_org_user                         : require('./features/delete_org_user'),
+    get_user_orgs                           : require('./features/get_user_orgs'),
+    get_actual_user_teams                   : require('./features/get_actual_user_teams'),
 }
