@@ -2,14 +2,14 @@ require('dotenv').config()
 const { default: axios } = require("axios");
 
 module.exports = function(optional={
-    dashboardId=0,
-    panelId=0,
-    query='',
-    state='',
-    limit=0,
-    folderId=0,
-    dashboardQuery='',
-    dashboardTag=''
+    dashboardId:0,
+    panelId:0,
+    query:'',
+    state:'',
+    limit:0,
+    folderId:0,
+    dashboardQuery:'',
+    dashboardTag:''
 }){
     let parameters = `?`
     if (optional !== {}){

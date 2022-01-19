@@ -1,6 +1,6 @@
 {
   "name": "grafana-http-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "* **Developed by** Damar Nur Ichwan",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,9 @@
   "keywords": [
     "grafana",
     "http",
-    "api"
+    "api",
+    "node js",
+    "javascript"
   ],
   "bugs": {
     "url": "https://github.com/damar-nur-ichwan/grafana-http-api/issues"
