@@ -1,7 +1,7 @@
 {
   "name": "grafana-http-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "* **Developed by** Damar Nur Ichwan",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +13,19 @@
     "dni-file-system": "^1.0.2",
     "dni-metric-parse": "^1.0.0",
     "dotenv": "^10.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damar-nur-ichwan/grafana-http-api.git"
+  },
+  "keywords": [
+    "grafana",
+    "http",
+    "api"
+  ],
+  "bugs": {
+    "url": "https://github.com/damar-nur-ichwan/grafana-http-api/issues"
+  },
+  "homepage": "https://github.com/damar-nur-ichwan/grafana-http-api#readme"
 }
