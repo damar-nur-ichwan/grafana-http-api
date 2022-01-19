@@ -708,7 +708,71 @@ grafana.find_annotations_tags(
 - **tag:** Optional. A string that you can use to filter tags.
 - **limit:** Optional. A number, where the default is 100. Max limit for results returned.
 # Playlists API
-
+## Search Playlist
+Get all existing playlist for the current organization using pagination
+```js
+grafana.search_playlist(
+    optional?: { 
+        query: string; 
+        limit: number; 
+        }
+    )
+```
+- **query -** Limit response to playlist having a name like this value.
+- **limit -** Limit response to X number of playlist.
+## Get one playlist
+```js
+grafana.get_one_playlist(
+    id?: number
+    )
+```
+## Get Playlist items
+```js
+grafana.get_playlist_items(
+    id?: number
+    )
+```
+## Get Playlist dashboards
+```js
+grafana.get_playlist_dashboards(
+    id?: number
+    )
+```
+## Create a playlist
+```js
+grafana.create_playlist(
+    name?: string, 
+    interval?: string, 
+    items?: [
+        { 
+            type: string; 
+            value: string; 
+            order: number; 
+            title: string; 
+        }
+    ])
+```
+## Update a playlist
+```js
+grafana.update_playlist(
+    id?: number, 
+    name?: string, 
+    interval?: string, 
+    items?: [
+        { 
+            type: string; 
+            value: string; 
+            order: number; 
+            title: string; 
+        }
+    ])
+```
+## Delete a playlist
+```js
+grafana.delete_playlist(
+    id?: number
+    )
+```
 # Alerting API
 # Alert notification channels API
 # User API
