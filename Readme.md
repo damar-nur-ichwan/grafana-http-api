@@ -621,7 +621,94 @@ grafana.delete_snapshot_by_deleteKey(
     )
 ```
 # Annotations API
+This is the API documentation for the new Grafana Annotations feature released in Grafana 4.6. Annotations are saved in the Grafana database (sqlite, mysql or postgres). Annotations can be global annotations that can be shown on any dashboard by configuring an annotation data source - they are filtered by tags. Or they can be tied to a panel on a dashboard and are then only shown on that panel.
+## Find Annotations
+```js
+grafana.find_annotations(
+    tags?: string[], 
+    optional?: { 
+        limit: number; 
+        from: number; 
+        to: number; 
+        }
+    )
+```
+- **from:** epoch datetime in milliseconds. Optional.
+- **to: epoch datetime in milliseconds. Optional.
+- **limit:** number. Optional - default is 100. Max limit for results returned.
+- **tags:** string. Optional. Use this to filter global annotations. Global annotations are annotations from an annotation data source that are not connected specifically to a dashboard or panel.
+*Starting in Grafana v6.4 regions annotations are now returned in one entity that now includes the timeEnd property.*
+## Create Annotation
+Creates an annotation in the Grafana database. The ```dashboardId``` and ```panelId``` fields are optional. If they are not specified then a global annotation is created and can be queried in any dashboard that adds the Grafana annotations data source. When creating a region annotation include the timeEnd property.
+
+The format for ```time``` and timeE```nd should be epoch numbers in millisecond resolution.
+```js
+grafana.create_annotation(
+    tags?: string[], 
+    text?: string, 
+    optional?: { 
+        time: number; 
+        timeEnd: number; 
+        }
+    )
+```
+*The response for this HTTP request is slightly different in versions prior to v6.4. In prior versions you would also get an endId if you where creating a region. But in 6.4 regions are represented using a single event with time and timeEnd properties.*
+## Create Annotation in Graphite format
+Creates an annotation by using Graphite-compatible event format. The ```when``` and ```data``` fields are optional. If ```when``` is not specified then the current time will be used as annotation’s timestamp. The ```tags``` field can also be in prior to Graphite 0.10.0 format (string with multiple tags being separated by a space).
+```js
+grafana.create_annotation_in_graphite(
+    what?: string, 
+    tags?: string[], 
+    optional?: { 
+        when: number; 
+        data: string; 
+        }
+    )
+```
+## Update Annotation
+Updates all properties of an annotation that matches the specified id. To only update certain property, consider using the Patch Annotation operation.
+```js
+grafana.update_annotation(
+    id?: number, 
+    tags?: string[], 
+    text?: string, 
+    optional?: { 
+        time: number; 
+        timeEnd: number; 
+        }
+    )
+```
+## Patch Annotation
+*This is available in Grafana 6.0.0-beta2 and above.*
+```js
+grafana.patch_annotation(
+    id?: number, 
+    tags?: string[], 
+    text?: string
+    )
+```
+Updates one or more properties of an annotation that matches the specified id.
+## Delete Annotation By Id
+Deletes the annotation that matches the specified id.
+```js
+grafana.delete_annotation_by_id(
+    id?: number
+    )
+```
+## Find Annotations Tags
+Find all the event tags created in the annotations.
+```js
+grafana.find_annotations_tags(
+    tags?: string[], 
+    optional?: { 
+        limit: number; 
+        }
+    )
+```
+- **tag:** Optional. A string that you can use to filter tags.
+- **limit:** Optional. A number, where the default is 100. Max limit for results returned.
 # Playlists API
+
 # Alerting API
 # Alert notification channels API
 # User API
