@@ -1,6 +1,2 @@
-.env
-node_modules/
-dashboards/
+node_modules
 package-lock.json
-trial-alibaba.js
-trial.js
