@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { default: axios } = require("axios");
 
-module.exports = function (orgId=0,name="",type="",datasource_url='',access='',optional={
+module.exports = function (data={orgId:0,name:"",type:"",url:'',access:''},optional={
     isDefault: false,
     basicAuth: false,
     basicAuthUser: '',
@@ -20,13 +20,6 @@ module.exports = function (orgId=0,name="",type="",datasource_url='',access='',o
         headers : {
             Authorization : `Bearer ${process.env.GRAFANA_TOKEN}`
         }
-    }
-    let data = {
-        orgId,
-        name,
-        type,
-        url: datasource_url,
-        access,
     }
 
     if (optional !== {}){

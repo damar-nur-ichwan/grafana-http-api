@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { default: axios } = require("axios");
 
-module.exports = function(datasourceId=0,Name='',Type='', datasource_url='',Access='', optional={
+module.exports = function(datasourceId=0,data={Name:'',Type:'', Url:'',Access:''}, optional={
     uid: 'I2A2141nk',
     password: '',
     user: '',
@@ -26,7 +26,6 @@ module.exports = function(datasourceId=0,Name='',Type='', datasource_url='',Acce
             Authorization : `Bearer ${process.env.GRAFANA_TOKEN}`
         }
     }
-    let data = {Name,Type,Url:datasource_url,Access}
     if (optional !== {}){
         const keys = Object.keys(optional)
         const value = Object.values(optional)
