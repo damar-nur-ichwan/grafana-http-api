@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { default: axios } = require("axios");
 
-module.exports = function(uid:"",data={name:"",type:"",isDefault:false,sendReminder:false,frequency:"",settings:{}}){
+module.exports = function(uid="",data={name:"",type:"",isDefault:false,sendReminder:false,frequency:"",settings:{}}){
     const host = `http://${process.env.GRAFANA_USERNAME}:${process.env.GRAFANA_PASSWORD}@${process.env.GRAFANA_HOST}`
     const path = `/api/alert-notifications/uid/${uid}`
     const url = host + path
